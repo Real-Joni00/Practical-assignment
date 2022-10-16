@@ -1,25 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import Dictionary from './components/dictionary'
+import { useState } from 'react';
 
 function App() {
+  const [preWord, setPreWord] = useState('')
+  const [word, setWord] = useState('')
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h3>Urban dictionary definition generator</h3>
+      <input value = {preWord} onChange = {e => setPreWord(e.target.value)}></input>
+      <button type='button' onClick={() => setWord(preWord)}>Get Definition</button>
+      <Dictionary word={word}/>
     </div>
-  );
+  )
 }
 
 export default App;
